@@ -16,6 +16,16 @@ namespace HotTowelSPAWithSEO.App_Start {
 
     public static void RegisterHotTowelPreStart() {
 
+        System.Web.Routing.RouteTable.Routes.MapRoute(
+            name: "HotTowelPartials",
+            url: "{action}/{id}",
+            defaults: new
+            {
+                controller = "HotTowel",
+                action = "Index",
+                id = UrlParameter.Optional
+            });
+
       // Preempt standard default MVC page routing to go to HotTowel Sample
       System.Web.Routing.RouteTable.Routes.MapRoute(
           name: "HotTowelMvc",

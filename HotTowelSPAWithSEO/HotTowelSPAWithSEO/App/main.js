@@ -5,6 +5,13 @@ require.config({
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
         'transitions': '../Scripts/durandal/transitions'
+    },
+    config: {
+        text: {
+            onXhr: function (xhr, url) {
+                xhr.setRequestHeader('X-HTML5SPARequest', 'true');
+            }
+        }
     }
 });
 
@@ -14,15 +21,14 @@ require.config({
 // libs and then register them with require as follows: 
 define('jquery', function () { return jQuery; });
 define('knockout', ko);
+define(['durandal/app', 'durandal/viewLocator', 'durandal/viewEngine', 'durandal/system', 'plugins/router', 'services/logger'], boot);
 
-define(['durandal/app', 'durandal/viewLocator', 'durandal/system', 'plugins/router', 'services/logger'], boot);
-
-function boot(app, viewLocator, system, router, logger) {
+function boot(app, viewLocator, viewEngine, system, router, logger) {
 
     // Enable debug message to show in the console 
     system.debug(true);
 
-    app.title = 'My App';
+    app.title = 'My Awesome SPA Website';
 
     app.configurePlugins({
         router: true
@@ -37,9 +43,10 @@ function boot(app, viewLocator, system, router, logger) {
         // [viewmodel]s/sessions --> [view]s/sessions.html
         // Defaults to viewmodels/views/views. 
         // Otherwise you can pass paths for modules, views, partials
-        viewLocator.useConvention();
+        viewEngine.viewExtension = '/';
+        viewLocator.useConvention(null, '../..');
 
         //Show the app by setting the root view model for our application.
-        app.setRoot('viewmodels/shell', 'crossfade');
+        app.setRoot('viewmodels/shell', 'entrance');
     });
 };

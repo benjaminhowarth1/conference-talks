@@ -26,7 +26,7 @@
             return router.makeRelative({ moduleId: 'viewmodels' }) // router will look here for viewmodels by convention
                 .map(routes)            // Map the routes
                 .buildNavigationModel() // Finds all nav routes and readies them
-                .activate();            // Activate the router
+                .activate({ pushState: true });            // Activate the router
         }
 
         function log(msg, data, showToast) {

@@ -155,6 +155,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MVCHijacks\HttpContextExtensions.cs" />
+    <Compile Include="MVCHijacks\DurandalPartialAttribute.cs" />
+    <Compile Include="MVCHijacks\Keywords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,11 +169,11 @@
     <Content Include="App\viewmodels\details.js" />
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\viewmodels\shell.js" />
-    <Content Include="App\views\details.html" />
-    <Content Include="App\views\footer.html" />
-    <Content Include="App\views\home.html" />
-    <Content Include="App\views\nav.html" />
-    <Content Include="App\views\shell.html" />
+    <None Include="Views\HotTowel\details.cshtml" />
+    <None Include="Views\HotTowel\footer.cshtml" />
+    <None Include="Views\HotTowel\home.cshtml" />
+    <None Include="Views\HotTowel\nav.cshtml" />
+    <None Include="Views\HotTowel\shell.cshtml" />
     <Content Include="content\app.css" />
     <Content Include="content\bootstrap-responsive.css" />
     <Content Include="content\bootstrap-responsive.min.css" />
@@ -238,8 +241,10 @@
     <Content Include="Scripts\toastr.min.js.map" />
     <Content Include="Views\HotTowel\index.cshtml" />
     <Content Include="Views\HotTowel\_splash.cshtml" />
+    <Content Include="Views\HotTowel\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\views\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
