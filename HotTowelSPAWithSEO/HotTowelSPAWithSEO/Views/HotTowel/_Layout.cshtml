@@ -1,6 +1,6 @@
 ﻿@using System.Web
 @using System.Web.Optimization
-@using HotTowelSPAWithSEO
+@using RomanSPA
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 <body>
     <div id="applicationHost">
         <div>
-            @if (Context.IsDurandalRequest()) {
+            @if (Context.IsRomanRequest()) {
                 <header data-bind="compose: { view: 'nav' }"></header>
             } else { 
                 <header>
@@ -35,7 +35,7 @@
             <section id="content" class="main container-fluid" data-bind="router: { transition: 'entrance', cacheViews: true }">
                 @RenderBody()
             </section>
-            @if (Context.IsDurandalRequest()) {
+            @if (Context.IsRomanRequest()) {
                 <footer data-bind="compose: { view: 'footer' }"></footer>
             } else { 
                 <footer>

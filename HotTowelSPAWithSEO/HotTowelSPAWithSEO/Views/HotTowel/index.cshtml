@@ -1,4 +1,5 @@
-﻿@{
-    Layout = (Context.IsDurandalRequest() ? null : "_Layout.cshtml");
+﻿@using RomanSPA;
+@{
+    Layout = (Context.IsRomanRequest() ? null : "_Layout.cshtml");
 }
 @Html.Action("shell")

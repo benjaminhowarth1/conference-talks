@@ -21,7 +21,8 @@
 
             var routes = [
                 { route: '', moduleId: 'home', title: 'Home', nav: 1 },
-                { route: 'details', moduleId: 'details', title: 'Details', nav: 2 }];
+                { route: 'details', moduleId: 'details', title: 'Details', nav: 2 },
+                { route: 'blog', moduleId: 'blog', title: 'Blog', nav: 3 }];
 
             return router.makeRelative({ moduleId: 'viewmodels' }) // router will look here for viewmodels by convention
                 .map(routes)            // Map the routes

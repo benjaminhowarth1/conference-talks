@@ -1,7 +1,10 @@
-﻿@using HotTowelSPAWithSEO
+﻿@using RomanSPA
+@using RomanSPA.AngularJS
 @{
-    Layout = (Context.IsDurandalRequest() ? null : "_Layout.cshtml");
+    Layout = (Context.IsRomanRequest() ? null : "_Layout.cshtml");
+    var str = new AngularHtmlString();
 }
 <section>
-    <h2 class="page-title" data-bind="text: title"></h2>
+    @str.Tag("h2").Bind("text").ServerResponse(() => { return Html.Raw("ServerText"); })
+    @* <h2 class="page-title" data-bind="text: title"></h2> *@
 </section>

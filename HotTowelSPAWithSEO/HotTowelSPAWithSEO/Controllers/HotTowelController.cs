@@ -1,29 +1,34 @@
 using System.Web.Mvc;
+using RomanSPA;
+using RomanSPA.Controllers;
+using RomanSPA.Models;
 
 namespace HotTowelSPAWithSEO.Controllers
 {
-    public class HotTowelController : Controller
+    public class HotTowelController : RomanController
     {
         //
         // GET: /HotTowel/
+        public ActionResult Index() { return View(); }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        [RomanAction]
         public ActionResult Home() { return View(); }
 
+        [RomanAction(typeof(Models.MyModelFactory<object>))]
         public ActionResult Details() { return View(); }
 
-        [DurandalPartial]
+        [RomanAction(typeof(Models.MyModelFactory<object>))]
+        public ActionResult Blog() { return View(); }
+
+        [RomanPartial]
         public ActionResult Shell() { return View(); }
 
-        [DurandalPartial]
+        [RomanPartial]
         public ActionResult Nav() { return View(); }
 
-        [DurandalPartial]
+        [RomanPartial]
         public ActionResult Footer() { return View(); }
 
+        protected override IActionInvoker CreateActionInvoker() { return new RomanActionInvoker(); }
     }
 }

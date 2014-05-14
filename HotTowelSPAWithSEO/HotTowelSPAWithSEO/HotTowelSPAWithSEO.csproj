@@ -152,12 +152,10 @@
     <Compile Include="App_Start\HotTowelConfig.cs" />
     <Compile Include="App_Start\HotTowelRouteConfig.cs" />
     <Compile Include="Controllers\HotTowelController.cs" />
+    <Compile Include="Models\MyModelFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MVCHijacks\HttpContextExtensions.cs" />
-    <Compile Include="MVCHijacks\DurandalPartialAttribute.cs" />
-    <Compile Include="MVCHijacks\Keywords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,8 +165,13 @@
     <Content Include="App\main.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\viewmodels\details.js" />
+    <Content Include="App\viewmodels\blog.js" />
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="content\toastr.css.map">
+      <DependentUpon>toastr.css</DependentUpon>
+    </Content>
+    <Content Include="Views\HotTowel\blog.cshtml" />
     <None Include="Views\HotTowel\details.cshtml" />
     <None Include="Views\HotTowel\footer.cshtml" />
     <None Include="Views\HotTowel\home.cshtml" />
@@ -186,7 +189,9 @@
     <Content Include="content\images\icon.png" />
     <Content Include="content\images\ios-startup-image-landscape.png" />
     <Content Include="content\images\ios-startup-image-portrait.png" />
-    <Content Include="content\toastr.css" />
+    <Content Include="content\toastr.css">
+      <DependentUpon>toastr.less</DependentUpon>
+    </Content>
     <Content Include="content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -246,10 +251,22 @@
   <ItemGroup>
     <Folder Include="App\views\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RomanSPA.AngularJS\RomanSPA.AngularJS.csproj">
+      <Project>{0fda9cc2-9bf7-4995-8e1a-16b55b95beb6}</Project>
+      <Name>RomanSPA.AngularJS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RomanSPA.Core\RomanSPA.Core.csproj">
+      <Project>{18d1a175-5274-43fb-854f-9a396cc52733}</Project>
+      <Name>RomanSPA.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
