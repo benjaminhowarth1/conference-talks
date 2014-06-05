@@ -1,0 +1,20 @@
+﻿@using RomanSPA.AngularJS;
+<!DOCTYPE html>
+<html ng-app="RomanSPA">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @Html.Angular().Tag("div").Controller("GenericController").ServerResponse(() => Body())
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/breeze.min.js"></script>
+    <script type="text/javascript" src="~/App/controllers/GenericController.js"></script>
+    <script type="text/javascript" src="~/App/app.js"></script>
+</body>
+</html>
+
+@helper Body() {
+    @RenderBody()
+}
