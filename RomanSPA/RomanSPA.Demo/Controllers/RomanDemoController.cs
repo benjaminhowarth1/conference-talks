@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+    using RomanSPA.Controllers;
     using RomanSPA.Demo.Models;
 
     public class RomanDemoController : RomanController {
@@ -18,8 +19,10 @@
         [RomanAction]
         public ActionResult Index() { return View(new IndexModel()); }
 
+        [RomanAction(Factory=typeof(BlogListFactory), ControllerName="BlogController", ViewPath="/assets/blog-list.html")]
         public ActionResult Blog() { return View(_context.BlogPosts); }
 
+        [RomanAction(ControllerName="BlogPostController")]
         public ActionResult BlogPost(string slug) {
             if (_context.BlogPosts.Any(p => MakeTitleUrlFriendly(p.Title) == slug)) {
                 return View(_context.BlogPosts.First(p => MakeTitleUrlFriendly(p.Title) == slug));

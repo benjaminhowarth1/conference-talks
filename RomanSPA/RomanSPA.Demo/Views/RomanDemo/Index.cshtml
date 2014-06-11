@@ -3,22 +3,25 @@
 @model IndexModel
 
 @helper ServerBody() {
-    <h2>Welcome to RomanSPA</h2>
-    <p>This is a demo site put together using AngularJS and some clever MVC hacks. Want to know more? Go check out my <a href="http://github.com/codegeceko/conference-talks/RomanSPA">Github.</a></p>
-    <h3>Legal bit</h3>
-    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
-    </a>
-    <br />
-    <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+    <div data-ng-controller="GenericController">
+        @if (Context.IsRomanViewRequest()) {
+            <h2>{{ title }}</h2>
+            <p>{{ body }}</p>
+        } else {
+            <h2>Welcome to RomanSPA</h2>
+            <p>This is a demo site put together using AngularJS and some clever MVC hacks. Want to know more? Go check out my <a href="http://github.com/codegeceko/conference-talks/RomanSPA">Github.</a></p>
+            <h3>Legal bit</h3>
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+            </a>
+            <br />
+        }
+        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+    </div>
 }
 
 @{
     Layout = !Context.IsRomanViewRequest() ? "~/Views/Shared/_Layout.cshtml" : null;
 }
-@Html.Angular().Tag("div").App("RomanSPA").Controller("GenericController").ServerResponse(() => Html.Raw(ServerBody()))
 
-<div ng-controller="GenericController" ng-app="RomanSPA">
-    <h2>{{ title }}</h2>
-    <p>{{ body }}</p>
-</div>
+@ServerBody()

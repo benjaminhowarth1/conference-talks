@@ -1,40 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Web.Mvc;
-using RomanSPA.Models;
-
-namespace RomanSPA {
+﻿namespace RomanSPA {
+    using System;
+    using System.Web.Mvc;
+    using RomanSPA.Models;
     
-    public class RomanActionAttribute : ActionFilterAttribute, IResultFilter {
+    public class RomanActionAttribute : ActionFilterAttribute {
 
-        public IModelFactory Factory { get; set; }
+        #region Properties
 
-        public string ClientViewName { get; set; }
-
-        #region .ctors
-
-        public RomanActionAttribute() : this(null, String.Empty) { }
+        public Type Factory { get; set; }
         
-        public RomanActionAttribute(Type factory) : this(factory, String.Empty) { }
-        
-        public RomanActionAttribute(string viewName) : this(null, viewName) { }
+        public string ControllerName { get; set; }
 
-        public RomanActionAttribute(Type factory, string viewName = "") {
-            if (factory != null) Factory = (IModelFactory)Activator.CreateInstance(factory);
-            ClientViewName = viewName;
-        }
+        public string ViewPath { get; set; }
 
         #endregion
 
-        public override void OnResultExecuting(ResultExecutingContext filterContext) {
-            if (String.IsNullOrEmpty(ClientViewName)) ClientViewName = filterContext.HttpContext.Request.Url.AbsolutePath;
+        #region Fields
 
-            if (Factory != null) {
-                // var modelFactory = FactoryType.GetInterfaces().First(p => p.Name == "IModelFactory");
-                filterContext.Result = new JsonResult() { Data = Factory.Execute(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        private IModelFactory ModelFactory { get; set; }
+
+        #endregion
+
+        #region .ctors
+
+        public RomanActionAttribute() : this(null, String.Empty, String.Empty) { }
+
+        public RomanActionAttribute(string viewPath) : this(null, String.Empty, viewPath) { }
+
+        public RomanActionAttribute(string controllerName, string viewPath) : this(null, controllerName, viewPath) { }
+
+        public RomanActionAttribute(Type factory, string viewPath) : this(factory, String.Empty, viewPath) { }
+
+        public RomanActionAttribute(Type factory, string controllerName, string viewPath) {
+            Factory = factory; ControllerName = controllerName; ViewPath = viewPath;
+            try {
+                ModelFactory = (IModelFactory)Activator.CreateInstance(Factory);
+            } catch (Exception ex) {
+                throw new ArgumentException(String.Format("Could not create factory for type '{0}'", factory.Name), ex);
+            }
+        }
+
+        #endregion
+        
+        public override void OnActionExecuting(ActionExecutingContext filterContext) {
+            if (filterContext.HttpContext.IsRomanModelRequest()) {
+                filterContext.Result = new JsonResult() { Data = ModelFactory.Execute() };
+            } else {
+                base.OnActionExecuting(filterContext);
             }
         }
     }

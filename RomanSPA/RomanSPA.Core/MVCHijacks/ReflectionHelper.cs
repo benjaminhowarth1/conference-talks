@@ -1,4 +1,4 @@
-﻿namespace RomanSPA.Core.MVCHijacks {
+﻿namespace RomanSPA {
     using System;
     using System.Collections.Generic;
     using System.Linq;

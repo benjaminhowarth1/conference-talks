@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-
-namespace RomanSPA {
+﻿namespace RomanSPA {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
 
     public class RomanPartialAttribute : ActionFilterAttribute {
 
         public override void OnActionExecuting(ActionExecutingContext filterContext) {
-            bool executeAction = (
-                filterContext.ActionDescriptor.GetCustomAttributes(typeof(RomanPartialAttribute), true).Any() &
-                    (filterContext.RequestContext.HttpContext.IsRomanViewRequest() | filterContext.IsChildAction)
-                    |
-                    (!filterContext.ActionDescriptor.GetCustomAttributes(typeof(RomanPartialAttribute), true).Any())
-            );
+            bool executeAction = (filterContext.RequestContext.HttpContext.IsRomanViewRequest() | filterContext.IsChildAction);
 
             if (executeAction) {
                 base.OnActionExecuting(filterContext);

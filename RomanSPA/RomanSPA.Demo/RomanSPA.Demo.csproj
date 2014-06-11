@@ -140,21 +140,15 @@
     <Compile Include="AngularHtmlHelper.cs" />
     <Compile Include="AngularHtmlString.cs" />
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
+    <Compile Include="Models\BlogListFactory.cs" />
     <Compile Include="Models\IndexModel.cs" />
-    <Compile Include="MVCHijacks\HttpContextBaseExtensions.cs" />
-    <Compile Include="MVCHijacks\IModelFactory.cs" />
-    <Compile Include="MVCHijacks\Keywords.cs" />
-    <Compile Include="MVCHijacks\RomanActionAttribute.cs" />
-    <Compile Include="Controllers\RomanController.cs" />
     <Compile Include="Controllers\RomanDemoController.cs" />
-    <Compile Include="Controllers\RouteApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BlogPost.cs">
       <DependentUpon>RomanDemo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JsRouteModel.cs" />
     <Compile Include="Models\RomanDemo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App\app.js" />
+    <Content Include="App\controllers\BlogController.js" />
     <Content Include="App\controllers\GenericController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -513,6 +508,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RomanSPA.Core\RomanSPA.Core.csproj">
+      <Project>{18d1a175-5274-43fb-854f-9a396cc52733}</Project>
+      <Name>RomanSPA.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
