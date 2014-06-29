@@ -6,6 +6,7 @@
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Mvc.Html;
+    using RomanSPA.Core;
 
     public class AngularHtmlString : IHtmlString {
 

@@ -1,27 +1,26 @@
-﻿@using RomanSPA.Demo.MVCHijacks;
+﻿@using RomanSPA.Core;
 @using RomanSPA.Demo.Models;
 @model IndexModel
 
-@helper ServerBody() {
-    <div data-ng-controller="GenericController">
-        @if (Context.IsRomanViewRequest()) {
-            <h2>{{ title }}</h2>
-            <p>{{ body }}</p>
-        } else {
-            <h2>Welcome to RomanSPA</h2>
-            <p>This is a demo site put together using AngularJS and some clever MVC hacks. Want to know more? Go check out my <a href="http://github.com/codegeceko/conference-talks/RomanSPA">Github.</a></p>
-            <h3>Legal bit</h3>
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-                <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
-            </a>
-            <br />
-        }
-        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-    </div>
-}
-
 @{
-    Layout = !Context.IsRomanViewRequest() ? "~/Views/Shared/_Layout.cshtml" : null;
-}
+    Layout = Context.IsRomanViewRequest() ? String.Empty : "~/Views/Shared/_Layout.cshtml";
 
-@ServerBody()
+    if (Context.IsRomanViewRequest()) {
+        <div>
+            <h2>This was loaded with AJAX.</h2>
+            <p>Check it out vs. the source code of the page.</p>
+        </div>
+    } else {
+        <div>
+            <div class="jumbotron">
+                <h1>Welcome to RomanSPA</h1>
+                <p>This is a demo site put together using AngularJS and some clever MVC hacks.</p>
+                <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+                </a>
+                <p><a class="btn btn-primary btn-lg" href="http://github.com/codegeceko/conference-talks/RomanSPA">Fork me on GitHub</a></p>
+            </div>
+        </div>
+    }
+}

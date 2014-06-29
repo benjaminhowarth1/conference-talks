@@ -11,7 +11,10 @@
             <h3>@post.Title</h3>
             <p>Posted on @post.PostDate</p>
         </header>
-        <p>@post.Summary</p>
-        <a href="@Html.Action("Blog", post.ID)">Read more...</a>
+        <img src="http://lorempixel.com/640/480/technics/4/" />
+        <main>
+            @Html.Raw(post.BodyText)
+            @Html.ActionLink("Read more...", "BlogPost", new RouteValueDictionary() { { "slug", post.Title.ToLower().Replace(" ", "-") } })
+        </main>
     </article>
 }

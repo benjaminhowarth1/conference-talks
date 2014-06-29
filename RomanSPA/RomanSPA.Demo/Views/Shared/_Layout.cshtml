@@ -4,9 +4,24 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
 </head>
 <body>
-    @RenderBody()
+    @Html.Action("Navigation", "RomanDemo")
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8" data-ng-view>
+                @RenderBody()
+            </div>
+            <div class="col-lg-4">
+                @Html.Action("Sidebar", "RomanDemo")
+            </div>
+        </div>
+    </div>
+
+    @Html.Action("Footer", "RomanDemo")
+
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>

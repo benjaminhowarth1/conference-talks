@@ -140,6 +140,7 @@
     <Compile Include="AngularHtmlHelper.cs" />
     <Compile Include="AngularHtmlString.cs" />
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
+    <Compile Include="Controllers\BlogPostsApiController.cs" />
     <Compile Include="Models\BlogListFactory.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Controllers\RomanDemoController.cs" />
@@ -173,6 +174,8 @@
     <Content Include="App\app.js" />
     <Content Include="App\controllers\BlogController.js" />
     <Content Include="App\controllers\GenericController.js" />
+    <Content Include="App\controllers\ShellController.js" />
+    <Content Include="App\views\blog-list.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -227,6 +230,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\bootswatch.less" />
+    <Content Include="Content\variables.less" />
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -499,6 +504,9 @@
     <Content Include="Views\RomanDemo\BlogPost.cshtml" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Partials\Navigation.cshtml" />
+    <Content Include="Views\Partials\Footer.cshtml" />
+    <Content Include="Views\Partials\Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

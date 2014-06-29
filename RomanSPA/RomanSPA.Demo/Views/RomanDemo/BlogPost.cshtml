@@ -8,5 +8,6 @@
         <h3>@Model.Title</h3>
         <p>Posted on @Model.PostDate</p>
     </header>
-    <p>@Model.BodyText</p>
+    <img src="http://lorempixel.com/640/480/technics/4/" />
+    @Html.Raw(Model.BodyText)
 </article>

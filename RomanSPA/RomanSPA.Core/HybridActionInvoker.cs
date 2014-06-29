@@ -5,7 +5,7 @@
     using System.Reflection;
     using System.Text;
     using System.Web.Mvc;
-    using RomanSPA.Models;
+    using RomanSPA.Core;
 
     public class RomanActionInvoker : ControllerActionInvoker {
         
@@ -13,9 +13,9 @@
             ActionResult result = null;
             var attribute = actionDescriptor.GetType().GetCustomAttribute<RomanActionAttribute>(false);
 
-            if (attribute != null) {
+            if (attribute != null && controllerContext.HttpContext.IsRomanModelRequest()) {
                 if (attribute.Factory != null) {
-                    // result = new JsonResult() { Data = attribute.Factory.Execute(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                    result = new JsonResult() { Data = attribute.ModelFactory.Execute(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 } else {
                     result = (ViewResult)base.InvokeActionMethod(controllerContext, actionDescriptor, parameters);
                 }

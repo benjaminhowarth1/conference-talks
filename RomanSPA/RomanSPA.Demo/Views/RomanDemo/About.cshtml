@@ -1,5 +1,7 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using RomanSPA;
+@using RomanSPA.Core;
+@{
+    Layout = Context.IsRomanViewRequest() ? String.Empty : "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>About My Blog</h2>
