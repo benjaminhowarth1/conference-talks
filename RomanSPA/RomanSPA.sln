@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanSPA.AngularJS", "Roman
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanSPA.Core", "RomanSPA.Core\RomanSPA.Core.csproj", "{18D1A175-5274-43FB-854F-9A396CC52733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanSPA.Demo", "RomanSPA.Demo\RomanSPA.Demo.csproj", "{81ADA21E-BF2C-4C78-AAE6-F30DFBC94F20}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{E54FE084-91FF-42DB-B875-10E881A2B0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanSPA.Demo.AngularJS", "Demos\RomanSPA.Demo.AngularJS\RomanSPA.Demo.AngularJS.csproj", "{81ADA21E-BF2C-4C78-AAE6-F30DFBC94F20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81ADA21E-BF2C-4C78-AAE6-F30DFBC94F20} = {E54FE084-91FF-42DB-B875-10E881A2B0DE}
 	EndGlobalSection
 EndGlobal
