@@ -34,6 +34,9 @@
 
         [RomanAction]
         public ActionResult BlogPost(string slug) {
+            // BH: This handles getting the basic template for blog posts, which we then populate with AngularJS data
+            if (String.IsNullOrEmpty(slug)) return View();
+
             var titlesToIds = _context.BlogPosts.ToList().Select(p => new KeyValuePair<int, string>(p.ID, p.Title));
 
             if (titlesToIds.Any(p => (MakeTitleUrlFriendly(p.Value) == slug))) {

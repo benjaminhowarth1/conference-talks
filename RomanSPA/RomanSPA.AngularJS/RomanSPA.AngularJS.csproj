@@ -85,9 +85,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularHtmlString.cs" />
+    <Compile Include="App_Start\RegisterRoutes.cs" />
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Models\AngularJsRouteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

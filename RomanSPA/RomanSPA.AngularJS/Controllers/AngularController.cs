@@ -9,11 +9,13 @@
     using RomanSPA.Core.Controllers;
     using RomanSPA.Core.Models;
     using System.Reflection;
+    using System.Web.Http;
 
     public class AngularController : BaseRouteApiController {
 
         private const string DefaultJsController = "GenericCtrl";
 
+        [HttpGet]
         public override IQueryable<JsRouteModel> Routes() {
             List<AngularJsRouteModel> jsRoutes = new List<AngularJsRouteModel>();
             foreach (var controller in GetControllers()) {

@@ -1,6 +1,7 @@
-﻿@model IEnumerable<RomanSPA.Demo.Models.BlogPost>
+﻿@using RomanSPA.Core;
+@model IEnumerable<RomanSPA.Demo.AngularJS.Models.BlogPost>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = Context.IsRomanViewRequest() ? String.Empty : "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Blog</h2>
